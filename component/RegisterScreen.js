@@ -2,17 +2,18 @@ import React,{useState} from 'react'
 import {Text, View, StyleSheet,TouchableOpacity, TextInput , ScrollView} from 'react-native'
 import { AntDesign } from '@expo/vector-icons';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
-import {firebase} from '../firebase/firebase'
+import {firebase} from '../firebase/config'
 
 function RegisterScreen() {
-    const [fullName, setFullName]=useState('')
+    // const [fullName, setFullName]=useState('')
     const [email, setEmail]=useState('')
-    const [phoneNumber, setPhoneNumber]=useState('')
-    const [role, setRole]=useState('')
-    const [twitter, setTwitter]=useState('')
-    const [linkedIn, setLinkedIn]=useState('')
+    const [password, setPassword]=useState('')
+    // const [phoneNumber, setPhoneNumber]=useState('')
+    // const [role, setRole]=useState('')
+    // const [twitter, setTwitter]=useState('')
+    // const [linkedIn, setLinkedIn]=useState('')
 
-    const onRegister =()=>{
+    const onRegister =({navigation})=>{
         firebase
         .auth()
         .createUserWithEmailAndPassword(password, email)
@@ -33,18 +34,20 @@ function RegisterScreen() {
                 <Text style={styles.profileText}>ADD PROFILE PHOTO</Text>
             </View>
             <View style={styles.formContainer}>
-            <TextInput onChangeText={(text)=>setFullName(text)} value={fullName} style={styles.inputFields}  placeholder='Full Name' textAlign='right' />
-            <View style={styles.border}></View>
+            {/* <TextInput onChangeText={(text)=>setFullName(text)} value={fullName} style={styles.inputFields}  placeholder='Full Name' textAlign='right' />
+            <View style={styles.border}></View> */}
             <TextInput onChangeText={(text)=>setEmail(text)} value={email} style={styles.inputFields}  placeholder='Email' textAlign='right' />
             <View style={styles.border}></View>
-            <TextInput onChangeText={(text)=>setPhoneNumber(text)} value={phoneNumber} style={styles.inputFields}  placeholder='Phone Number' textAlign='right' />
+            <TextInput secureTextEntry onChangeText={(text)=>setPassword(text) } value={password} style={styles.inputFields}  placeholder='Password' textAlign='right' /> 
+            <View style={styles.border}></View>
+            {/* <TextInput onChangeText={(text)=>setPhoneNumber(text)} value={phoneNumber} style={styles.inputFields}  placeholder='Phone Number' textAlign='right' />
             <View style={styles.border}></View>
             <TextInput onChangeText={(text)=>setRole(text)} value={role} style={styles.inputFields}  placeholder='Role' textAlign='right' />
             <View style={styles.border}></View>
             <TextInput onChangeText={(text)=>setTwitter(text)} value={twitter} style={styles.inputFields}  placeholder='Twitter' textAlign='right' />
             <View style={styles.border}></View>
             <TextInput onChangeText={(text)=>setLinkedIn(text)} value={linkedIn} style={styles.inputFields}  placeholder='LinkedIn' textAlign='right' />
-            <View style={styles.border}></View>
+            <View style={styles.border}></View> */}
             <TouchableOpacity onPress={onRegister} style={styles.btn}>
                 <Text style={styles.btnText}>REGISTER</Text>
             </TouchableOpacity>

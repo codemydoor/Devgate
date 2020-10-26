@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import {Text, View, StyleSheet,TouchableOpacity, TextInput, Image } from 'react-native'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import sign from '../assets/sign.jpg'
-import {firebase} from '../firebase/firebase'
+import firebase from '../firebase/config'
 
 function RegisterScreen() {
     const [email, setEmail]=useState('');

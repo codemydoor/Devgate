@@ -1,7 +1,7 @@
-import firebase from 'firebase'
-// import * as firebase from 'firebase';
+import * as firebase from "firebase/app";
+import "@firebase/auth";
 
-var firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyA0SOKfMyVXVAdA0q2AZ7kS2YZ76lEpecs",
     authDomain: "contact-manager-6a720.firebaseapp.com",
     databaseURL: "https://contact-manager-6a720.firebaseio.com",
@@ -11,4 +11,4 @@ var firebaseConfig = {
     appId: "1:441388076862:web:6ac1d8c76b19f237e8e66f"
   };
  firebase.initializeApp(firebaseConfig);
- export default firebase
+ export  {firebase}
