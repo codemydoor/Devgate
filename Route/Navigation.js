@@ -11,42 +11,18 @@ import RegisterScreen from '../component/RegisterScreen';
 import SignInScreen from '../component/SignInScreen';
 import HomeScreen from '../component/HomeScreen';
 import CameraScreen from '../component/CameraScreen';
-import DetailScreen from "../component/DetailScreen"
+import DetailScreen from "../component/DetailScreen";
+import QrScreen from '../component/QRScreen';
+
+
 
 const Stack = createStackNavigator();
+
 function Navigation() {
     return (
-     
             <NavigationContainer>
               <Stack.Navigator>
-                <Stack.Screen 
-                options={{
-                   headerStyle:{
-                     height: 120,
-                     backgroundColor:"white",
-                   },
-                   headerTitle:()=>null,
-                   headerLeft:()=>{
-                    return(
-                      <View style={styles.companyTag}>
-                        <Image style={styles.logo} source={logo1} />
-                        <Text style={styles.companyName}>Devgate</Text>
-                     </View>
-                    )
-                   },
-                   headerRight:()=>{
-                    return(
-                      <View style={styles.profileContainer}>
-                       <AntDesign onPress={()=>{
-                         navigation.navigate("DetailScreen")
-                       }} name="user" size={23} color="blue" />
-                      </View>
-                    )
-                   }
-                   }} name='HomeScreen' component={HomeScreen} />
-  
-                <Stack.Screen  name="CameraScreen" component={CameraScreen} />
-                <Stack.Screen  name="DetailScreen" component={DetailScreen} />
+              
                 <Stack.Screen options={{
                   header:()=>null
                 }}
@@ -82,6 +58,42 @@ function Navigation() {
                   }
                 }}
                   name="SignInScreen" component={SignInScreen} />
+                    <Stack.Screen 
+                options={({ navigation, route }) => ({
+                  headerStyle:{
+                    height: 120,
+                    backgroundColor:"white",
+                  },
+                  headerTitle:()=>null,
+                  headerLeft:()=>{
+                    return(
+                      <View style={styles.companyTag}>
+                        <Image style={styles.logo} source={logo1} />
+                        <Text style={styles.companyName}>Devgate</Text>
+                     </View>
+                    )
+                   },
+                   headerRight:()=>{
+                    return(
+                      <View style={styles.profileContainer}>
+                       <AntDesign onPress={()=>{
+                         navigation.navigate("DetailScreen")
+                       }} name="user" size={23} color="blue" />
+                      </View>
+                    )
+                   }
+                })}
+                 name='HomeScreen' component={HomeScreen} />
+                   <Stack.Screen name="QRScreen" component={QrScreen} />
+                <Stack.Screen
+                options={{
+                  headerStyle:{
+                    height: 120,
+                    backgroundColor:"#F8B806",
+                  },}}
+                  name="CameraScreen" component={CameraScreen} />
+
+                <Stack.Screen  name="DetailScreen" component={DetailScreen} />
               </Stack.Navigator>
               
             </NavigationContainer>

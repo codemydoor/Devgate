@@ -1,23 +1,37 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {Text, View, StyleSheet,TouchableOpacity, TextInput, Image } from 'react-native'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 import sign from '../assets/sign.jpg'
+import {firebase} from '../firebase/firebase'
 
 function RegisterScreen() {
+    const [email, setEmail]=useState('');
+    const [password, setPassword]=useState('');
+    // const [logging, setlogging] = useState(false),
+    const onLoginPress = () => {
+        // setlogging(true),
+        firebase
+          .auth()
+          .signInWithEmailAndPassword(email, password)
+          .then((response)=>{
+              console.log(response)
+
+          }).catch((err)=>{
+              console.log(err)
+          })   
+    }       
     return (
         <View>
             <KeyboardAwareScrollView >
             <Image source={sign} style={styles.image} />
             <View style={styles.formContainer}>
-            <TextInput style={styles.inputFields}  placeholder='Email' textAlign='right' />
+            <TextInput onChangeText={(text)=>setEmail(text)} value={email} style={styles.inputFields}  placeholder='Email' textAlign='right' />
             <View style={styles.border}></View>
-            <TextInput style={styles.inputFields}  placeholder='Password' textAlign='right' />
-            
-            <TouchableOpacity style={styles.btn}>
+            <TextInput secureTextEntry onChangeText={(text)=>setPassword(text) } value={password} style={styles.inputFields}  placeholder='Password' textAlign='right' /> 
+            <TouchableOpacity onPress={onLoginPress} style={styles.btn}>
                 <Text style={styles.btnText}>SIGN IN</Text>
             </TouchableOpacity>
-            </View>
-                
+            </View> 
             </KeyboardAwareScrollView>
         </View>
     )

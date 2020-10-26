@@ -1,9 +1,9 @@
 import React from 'react'
 import  { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Button } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
-function CameraScreen() {
+function CameraScreen({navigation}) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
 
@@ -39,8 +39,43 @@ function CameraScreen() {
       />
 
       {scanned && <Button  title={'Tap to Scan Again'} onPress={() => setScanned(false)} />}
+      <View style={styles.bottomTextContainer}>
+                <View style={styles.btntextContainer}>
+                <Text style={{marginTop:5}}>Wants to add a connection?</Text>
+                <TouchableOpacity 
+                onPress={()=>{
+                  navigation.navigate("QRScreen")
+                }}
+
+                 style={styles.btn} >
+                    <Text style={{alignSelf:"center", marginTop:7, color:"blue", fontSize:12}}>Generate QR</Text>
+               </TouchableOpacity>
+                </View>
+            </View>
     </View>
     )
 }
 
 export default CameraScreen
+
+const styles= StyleSheet.create({
+  bottomTextContainer:{
+    paddingHorizontal:40,
+    borderTopColor:"gray",
+    borderTopWidth:0.7,
+    backgroundColor:"white"
+},
+btn:{
+    height:35,
+    width: 90,
+    borderWidth:2,
+    borderColor:"blue",
+    borderRadius:3,
+    marginHorizontal:15,
+    marginBottom:10
+},
+btntextContainer:{
+   flexDirection:'row',
+   marginVertical:15
+}
+})
