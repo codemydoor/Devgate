@@ -1,6 +1,5 @@
 import React ,{Component}from 'react'
 'use strict';
- 
 
 import QRCode from 'react-native-qrcode-svg';
 
@@ -13,9 +12,11 @@ import {
     Text
 } from 'react-native';
  
-class QRScreen extends Component {
+export default class QRScreen extends Component {
   state = {
-    text: 'devcom/@',
+    name: 'devcom/@',
+    number:"",
+    email:"",
   };
  
   render() {

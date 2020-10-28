@@ -1,7 +1,7 @@
 import React from 'react'
 import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native'
 import qrcode from '../assets/qrcode.png'
-import { Camera } from 'expo-camera';
+
 
 
 function HomeScreen({navigation}) {

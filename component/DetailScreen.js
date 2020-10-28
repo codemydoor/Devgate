@@ -1,10 +1,10 @@
 import React from 'react'
 import {View, Text, StyleSheet} from 'react-native'
 
-function DetailScreen() {
+function DetailScreen({route}) {
     return (
          <View>
-             <Text>hello</Text>
+             <Text></Text>
         </View>
     )
 }

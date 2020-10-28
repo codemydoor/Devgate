@@ -1,7 +1,8 @@
 import React from 'react'
 import  { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Button } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Button, FlatList } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
+
 
 function CameraScreen({navigation}) {
   const [hasPermission, setHasPermission] = useState(null);
@@ -14,9 +15,15 @@ function CameraScreen({navigation}) {
     })();
   }, []);
 
-  const handleBarCodeScanned = ({ type, data }) => {
+  const handleBarCodeScanned = ({ type=qr, data }) => {
     setScanned(true);
-    alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    // alert(`Bar code with type ${type} and data ${data} has been scanned!`);
+    navigation.navigate("DetailScreen",{
+      data:{data},
+      type:{type},
+     
+    })
+    console.log(data)
   };
 
   if (hasPermission === null) {
@@ -52,6 +59,10 @@ function CameraScreen({navigation}) {
                </TouchableOpacity>
                 </View>
             </View>
+            <FlatList
+             data={data}
+             renderItem={({data})} 
+             />
     </View>
     )
 }
